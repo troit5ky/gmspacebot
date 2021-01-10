@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	Ver = "0.1"
+	Ver = "0.12"
 
 	author = &discordgo.MessageEmbedAuthor{
 		IconURL: "https://troit5ky.space/bot/assets/img/bot.gif",

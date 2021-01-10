@@ -14,7 +14,7 @@ func Init(router *dgc.Router) {
 
 	router.RegisterCmd(&dgc.Command{
 		Name:        "ping",
-		Description: "Вернёт pong.",
+		Description: "Вернёт pong",
 		Usage:       "ping",
 		Example:     "ping",
 		IgnoreCase:  true,
@@ -25,8 +25,20 @@ func Init(router *dgc.Router) {
 	})
 
 	router.RegisterCmd(&dgc.Command{
+		Name:        "echo",
+		Description: "Вернёт аргументы",
+		Usage:       "echo [a]...",
+		Example:     "echo Hello World!",
+		IgnoreCase:  true,
+		RateLimiter: dgc.NewRateLimiter(5*time.Second, 3*time.Second, func(ctx *dgc.Ctx) {
+			ctx.RespondText("Нельзя использовать бота так часто!")
+		}),
+		Handler: Echo,
+	})
+
+	router.RegisterCmd(&dgc.Command{
 		Name:        "status",
-		Description: "Вернёт статус Garrys Mod сервера",
+		Description: "Вернёт статус Garry's Mod сервера",
 		Usage:       "status",
 		Example:     "status",
 		IgnoreCase:  true,

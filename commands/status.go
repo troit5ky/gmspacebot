@@ -15,9 +15,6 @@ func Status(ctx *dgc.Ctx) {
 
 	client, err := a2s.NewClient(config.Option.IP)
 	if err != nil {
-		embed.Color = 16730698
-		embed.Description = "Сервер недоступен"
-		ctx.RespondEmbed(embed)
 		log.Println(err)
 		return
 	}

@@ -9,23 +9,25 @@ import (
 
 type (
 	OptionStruct struct {
-		Token      string `json:"token"`
-		Prefix     string `json:"prefix"`
-		IP         string `json:"ip"`
-		Status     string `json:"status"`
-		StatusCh   bool   `json:"statuschannel"`
-		StatusChID string `json:"statuschannelid"`
+		Token         string `json:"token"`
+		Prefix        string `json:"prefix"`
+		IP            string `json:"ip"`
+		Status        string `json:"status"`
+		StatusCh      bool   `json:"statuschannel"`
+		StatusChID    string `json:"statuschannelid"`
+		StatusChMsgID string `json:"statuschannelmsgid"`
 	}
 )
 
 var (
 	Option_Example = OptionStruct{
-		Token:      "null",
-		Prefix:     ".",
-		IP:         "192.168.0.1:27015",
-		Status:     "null",
-		StatusCh:   true,
-		StatusChID: "null",
+		Token:         "null",
+		Prefix:        ".",
+		IP:            "127.0.0.1:27015",
+		Status:        "Type .help :)",
+		StatusCh:      true,
+		StatusChID:    "null",
+		StatusChMsgID: "null",
 	}
 
 	Option *OptionStruct
@@ -59,4 +61,13 @@ func CreateExample() {
 
 	ioutil.WriteFile("config/bot.json", a, 0644)
 	ioutil.WriteFile("config/bot_example.json", a, 0644)
+}
+
+func Rewrite(options OptionStruct) {
+	json, err := json.MarshalIndent(options, " ", " ")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	ioutil.WriteFile("config/bot.json", json, 0644)
 }

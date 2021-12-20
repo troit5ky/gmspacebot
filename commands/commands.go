@@ -3,7 +3,7 @@ package commands
 import (
 	"log"
 
-	"github.com/Lukaesebrot/dgc"
+	"github.com/lus/dgc"
 )
 
 func Init(router *dgc.Router) {

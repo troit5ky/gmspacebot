@@ -5,7 +5,7 @@ import (
 
 	"gmspacebot/lib/config"
 
-	"github.com/Lukaesebrot/dgc"
+	"github.com/lus/dgc"
 	"github.com/rumblefrog/go-a2s"
 )
 
@@ -16,6 +16,7 @@ func Status(ctx *dgc.Ctx) {
 	client, err := a2s.NewClient(config.Option.IP)
 	if err != nil {
 		connectionTimeOut(ctx, err)
+		return
 	}
 
 	defer client.Close()
@@ -24,6 +25,7 @@ func Status(ctx *dgc.Ctx) {
 
 	if err != nil {
 		connectionTimeOut(ctx, err)
+		return
 	}
 
 	Players := strconv.Itoa(int(info.Players))

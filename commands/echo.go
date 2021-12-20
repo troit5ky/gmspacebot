@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/Lukaesebrot/dgc"
+	"github.com/lus/dgc"
 )
 
 func Echo(ctx *dgc.Ctx) {
@@ -11,7 +11,7 @@ func Echo(ctx *dgc.Ctx) {
 	if ctx.Arguments.Amount() < 1 {
 		notEnoughArgs(ctx)
 	} else {
-		embed.Description = "```\n" + ctx.Arguments.Raw() + "\n```"
+		embed.Description = ctx.Arguments.Raw()
 		ctx.RespondEmbed(embed)
 	}
 }
